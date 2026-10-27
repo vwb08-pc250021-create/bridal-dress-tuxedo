@@ -13,8 +13,19 @@
 .changes{padding:15px 16px;border:1px solid #f2b7cc;border-radius:15px;background:#fdf0f5;margin:12px 0}
 .changes h2{font-size:13px;color:#c35c80;margin:0 0 8px}.changes ul{list-style:none;padding:0;margin:0}.changes li,.changes p{font-size:12px;line-height:1.9;color:#a47b8d;margin:0;overflow-wrap:anywhere}.changes strong{color:#c35c80}.preview-note{font-size:11px;color:#9a7888;line-height:1.8;margin:12px 0}
 #confirm-heading:focus{outline:none}@media(max-width:360px){.confirm-card div{grid-template-columns:86px minmax(0,1fr);gap:8px}}
-/* 参考画像に合わせた、入力・確認画面共通の寸法 */
-.app{max-width:480px}header{padding:18px 20px}.brand{font-size:20px}.account{font-size:12px}main{max-width:none;padding:22px 20px}h1{font-size:18px;margin-bottom:20px}.field{margin-bottom:15px}.field-title{margin-bottom:8px}input{min-height:40px;padding:9px 13px}.primary,.secondary{min-height:52px}.confirm-card{padding:12px 17px}.confirm-card div{grid-template-columns:110px minmax(0,1fr);padding:13px 0}.confirm-card dt{font-size:13px}.confirm-card dd{font-size:13px}.notice{margin-bottom:14px}.address-details{margin:4px 0 16px;color:#a47b8d;font-size:12px}.address-details summary{cursor:pointer;padding:6px 0}.address-details[open] summary{margin-bottom:10px}.address-details .field:last-child{margin-bottom:0}.confirm-address{margin:6px 0 12px}.confirm-address dl{padding:0 12px}.preview-note{margin:10px 0;font-size:10px}footer{padding:12px}.sample-note{font-size:10px;margin-top:18px}@media(min-width:600px){.app{margin:18px auto;min-height:calc(100vh - 36px);border:1px solid #e2c7d3;border-radius:28px;overflow:clip}}@media(max-width:360px){.confirm-card div{grid-template-columns:86px minmax(0,1fr)}}
+/* PC向け共通レイアウト。小さい画面では幅に合わせて縮小します。 */
+.app{width:100%;max-width:1184px;min-height:100vh;margin:0 auto;border:0;border-radius:0;overflow:visible}
+header{padding:22px 40px}.brand{font-size:27px}.account{font-size:15px}.logout{font-size:13px}
+nav button,nav a{padding:15px 8px;font-size:14px}.nav-icon{font-size:22px}
+main{width:100%;max-width:840px;padding:40px 32px;margin:0 auto;flex:1}
+h1{font-size:24px;margin-bottom:28px;padding-left:14px}.field{margin-bottom:22px}.field-title{font-size:15px;margin-bottom:10px}.required{font-size:11px}
+input{font-size:16px;min-height:48px;padding:12px 16px}.pair{gap:14px}.hint{font-size:12px}
+.primary,.secondary{min-height:54px;font-size:16px}.confirm-card{padding:16px 26px}.confirm-card div{grid-template-columns:160px minmax(0,1fr);padding:17px 0}.confirm-card dt,.confirm-card dd{font-size:16px}
+.notice{font-size:15px;padding:18px 20px}.changes{padding:18px 20px;margin:18px 0}.changes h2{font-size:15px}.changes li,.changes p{font-size:14px}
+.address-details{margin:8px 0 20px;color:#a47b8d;font-size:13px}.address-details summary{cursor:pointer;padding:6px 0}.address-details[open] summary{margin-bottom:12px}.address-details .field:last-child{margin-bottom:0}.confirm-address dl{padding:0 12px}
+.preview-note{font-size:12px;margin:14px 0}.sample-note{font-size:12px;margin-top:24px}footer{padding:16px;font-size:12px}
+@media(max-width:599px){header{padding:18px 16px}.brand{font-size:20px}.account{font-size:12px}.logout{font-size:11px}nav button,nav a{font-size:12px;padding:12px 4px}.nav-icon{font-size:19px}main{padding:24px 20px}h1{font-size:19px;margin-bottom:22px}.field{margin-bottom:16px}.field-title{font-size:13px}.pair{gap:8px}input{min-height:42px;padding:10px 13px}.confirm-card{padding:12px 16px}.confirm-card div{grid-template-columns:104px minmax(0,1fr);gap:10px;padding:13px 0}.confirm-card dt,.confirm-card dd{font-size:13px}.notice{font-size:13px;padding:16px}.changes h2{font-size:13px}.changes li,.changes p{font-size:12px}.primary,.secondary{font-size:15px}}
+@media(max-width:360px){.confirm-card div{grid-template-columns:84px minmax(0,1fr)}}
 </style>
 </head>
 <body>
