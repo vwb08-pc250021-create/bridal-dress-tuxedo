@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>管理者メニュー | ブライダル診断システム</title><style>
+/* Shared colors from the supplied administrator design. */
+:root {
+  --dark: #1a1a2e;
+  --dark-mid: #2d2060;
+  --purple: #6b21a8;
+  --purple-mid: #7c3aed;
+  --purple-light: #a78bfa;
+  --gold: #c9a84c;
+  --danger: #c0392b;
+  --warn: #e67e22;
+  --gray2: #5d6d7e;
+  --gray5: #ecf0f1;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #eeeaf5; color: var(--dark); font-family: 'Hiragino Sans', 'Meiryo', sans-serif; padding: 40px 32px 24px; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--purple-mid); outline-offset: 4px; }
+.admin-layout { width: 100%; max-width: 1280px; margin: 0 auto; }
+.admin-shell { background: white; border-radius: 16px; box-shadow: 0 8px 40px #1a1a2e18; }
+.admin-header { border-radius: 16px 16px 0 0; background: linear-gradient(135deg, var(--dark), var(--dark-mid) 55%, var(--purple)); padding: 26px 36px 28px; color: white; }
+.branch-row, .page-title-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.branch-row { margin-bottom: 18px; }
+.sys-name { font-size: 14px; color: var(--purple-light); }
+.admin-badge { border: 1px solid #a78bfa80; border-radius: 20px; background: #ffffff18; padding: 5px 14px; font-size: 12px; font-weight: 700; }
+.page-title-row h2 { font-size: 28px; letter-spacing: .04em; }
+.admin-name { font-size: 14px; color: #ddd6fe; }
+.bottom-nav { display: flex; gap: 8px; padding: 0 28px; border-bottom: 1px solid #e4dfed; background: white; }
+.bottom-nav a { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 24px; border-bottom: 3px solid transparent; color: var(--gray2); text-decoration: none; font-size: 14px; }
+.bottom-nav a.active { color: var(--purple-mid); border-bottom-color: var(--purple-mid); font-weight: 700; }
+.bottom-nav a:hover { background: #f7f4ff; }
+.nav-icon { font-size: 19px; }
+.content { display: grid; grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr); gap: 24px; padding: 32px 36px 36px; background: #f5f4f8; border-radius: 0 0 16px 16px; }
+.stat-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.stat-box { background: white; padding: 22px; border-radius: 12px; box-shadow: 0 1px 6px #0000000a; text-align: center; }
+.s-num { color: var(--purple-mid); font-weight: 700; font-size: 32px; margin-bottom: 4px; }
+.s-lbl { color: var(--gray2); font-size: 13px; }
+.menu-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.menu-item { width: 100%; background: white; border: 0; border-top: 3px solid; border-radius: 12px; padding: 26px 12px; text-align: center; box-shadow: 0 1px 6px #00000012; transition: transform .15s, box-shadow .15s; }
+.menu-item:hover { transform: translateY(-2px); box-shadow: 0 6px 18px #1a1a2e16; }
+.menu-item span { display: block; }
+.mi-icon { font-size: 32px; margin-bottom: 12px; }
+.mi-label { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.mi-sub { font-size: 12px; color: var(--gray2); }
+.purple-border { border-top-color: var(--purple-mid); }
+.dark-border { border-top-color: var(--dark); }
+.gold-border { border-top-color: var(--gold); }
+.danger-border { border-top-color: var(--danger); }
+.card { padding: 24px; background: white; border-radius: 12px; box-shadow: 0 1px 6px #0000000f; }
+.notices { align-self: start; }
+.card-title { font-size: 16px; font-weight: 700; margin-bottom: 18px; }
+.detail-row { display: flex; flex-wrap: wrap; gap: 8px 12px; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #ecf0f1; font-size: 13px; line-height: 1.7; }
+.detail-row:last-child { border-bottom: 0; }
+.detail-key { color: var(--gray2); font-weight: 600; }
+.detail-val { text-align: right; overflow-wrap: anywhere; }
+.sample-note { font-size: 12px; color: var(--gray2); text-align: center; margin: 20px 12px 12px; }
+.screen-footer { text-align: center; font-size: 11px; color: var(--gray2); }
+dialog { margin: auto; width: 420px; max-width: calc(100% - 32px); padding: 28px; border: 0; border-radius: 12px; color: var(--dark); line-height: 1.8; }
+dialog h2 { font-size: 20px; margin-bottom: 12px; }
+dialog::backdrop { background: #1a1a2e88; }
+dialog button { margin-top: 20px; padding: 10px 24px; border: 0; border-radius: 8px; background: var(--purple-mid); color: white; }
+@media (max-width: 1050px) {
+ .content { grid-template-columns: 1fr; }
+ .menu-item { padding: 22px 12px; }
+}
+@media (max-width: 600px) {
+ body { padding: 16px 12px; }
+ .admin-header { padding: 22px 20px; }
+ .sys-name { font-size: 11px; }
+ .admin-badge { font-size: 10px; padding: 4px 8px; }
+ .page-title-row h2 { font-size: 22px; }
+ .admin-name { font-size: 12px; }
+ .bottom-nav { gap: 0; padding: 0 8px; }
+ .bottom-nav a { flex: 1; padding: 12px 4px; flex-direction: column; gap: 5px; font-size: 11px; }
+ .content { padding: 20px 16px; gap: 18px; }
+ .stat-row { gap: 8px; }
+ .stat-box { padding: 16px 8px; }
+ .s-num { font-size: 26px; }
+ .s-lbl { font-size: 11px; }
+ .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+ .card { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .menu-item { transition: none; } }
+
+</style></head><body><div class="admin-layout">
+  <div class="admin-shell">
+    <header class="admin-header">
+      <div class="branch-row">
+        <span class="sys-name">🔐 ブライダル診断システム</span>
+        <span class="admin-badge">システム管理者</span>
+      </div>
+      <div class="page-title-row">
+        <h2>管理者メニュー</h2>
+        <span class="admin-name">👤 admin</span>
+      </div>
+    </header>
+    <nav aria-label="管理メニュー" class="bottom-nav">
+      <a href="./admin-menu-preview.html" class="active"><span class="nav-icon">🏠</span>メニュー</a>
+      <a href="#"><span class="nav-icon">👥</span>会員</a>
+      <a href="#"><span class="nav-icon">🏪</span>店舗</a>
+      <a href="#"><span class="nav-icon">📊</span>レポート</a>
+      <a href="#"><span class="nav-icon">🔐</span>設定</a>
+    </nav>
+    <main class="content">
+      <div class="stat-row">
+        <div class="stat-box"><div class="s-num">3</div><div class="s-lbl">店舗数</div></div>
+        <div class="stat-box"><div class="s-num">248</div><div class="s-lbl">全会員数</div></div>
+        <div class="stat-box"><div class="s-num">12</div><div class="s-lbl">スタッフ数</div></div>
+      </div>
+      <div class="menu-grid">
+        <button type="button" class="menu-item purple-border">
+          <span class="mi-icon">👥</span>
+          <span class="mi-label">会員管理</span>
+          <span class="mi-sub">全店舗・全権限</span></button>
+        <button type="button" class="menu-item dark-border">
+          <span class="mi-icon">🏪</span>
+          <span class="mi-label">店舗管理</span>
+          <span class="mi-sub">3店舗登録中</span></button>
+        <button type="button" class="menu-item gold-border">
+          <span class="mi-icon">👤</span>
+          <span class="mi-label">スタッフ管理</span>
+          <span class="mi-sub">アカウント・権限</span></button>
+        <button type="button" class="menu-item purple-border">
+          <span class="mi-icon">📊</span>
+          <span class="mi-label">統計・レポート</span>
+          <span class="mi-sub">全店舗データ</span></button>
+        <button type="button" class="menu-item dark-border">
+          <span class="mi-icon">🔐</span>
+          <span class="mi-label">セキュリティ</span>
+          <span class="mi-sub">ログ・監査</span></button>
+        <button type="button" class="menu-item danger-border">
+          <span class="mi-icon">⚙️</span>
+          <span class="mi-label">システム設定</span>
+          <span class="mi-sub">全体設定</span></button>
+      </div>
+      <section class="card notices" aria-labelledby="notification-title">
+        <h3 class="card-title" id="notification-title">🔔 システム通知</h3>
+        <div class="detail-row"><span class="detail-key">本日</span><span class="detail-val">新規会員登録 5名</span></div>
+        <div class="detail-row"><span class="detail-key">昨日</span><span class="detail-val">来店予約 28件（全店合計）</span></div>
+        <div class="detail-row" style="color:var(--warn);"><span class="detail-key">⚠️ 警告</span><span class="detail-val" style="color:var(--warn);">未処理キャンセル 2件</span></div>
+      </section>
+    </main>
+
+  </div>
+</div>
+
+<p class="sample-note">画面プレビュー：件数・通知・管理者名はサンプルです。</p><footer class="screen-footer">© ブライダル診断システム</footer><dialog id="notice" aria-labelledby="notice-title"><h2 id="notice-title"></h2><p id="notice-text"></p><button type="button" id="close-notice">閉じる</button></dialog><script>
+"use strict";
+const notice = document.getElementById("notice");
+document.getElementById("close-notice").addEventListener("click", () => notice.close());
+function inform(title) {
+  document.getElementById("notice-title").textContent = title;
+  document.getElementById("notice-text").textContent = title === "会員管理" || title === "会員"
+    ? "会員一覧（画面ID：7-1-1-4）への接続先です。会員一覧画面は今後実装予定です。"
+    : "この機能は今後実装予定です。";
+  notice.showModal();
+}
+document.querySelectorAll(".menu-item").forEach(button => {
+  button.addEventListener("click", () => inform(button.querySelector(".mi-label").textContent));
+});
+document.querySelectorAll('.bottom-nav a[href="#"]').forEach(link => {
+  link.addEventListener("click", event => {event.preventDefault(); inform(link.lastChild.textContent.trim());});
+});
+
+</script></body></html>

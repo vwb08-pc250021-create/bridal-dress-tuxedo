@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>管理者メニュー | ブライダル診断システム</title><link rel="stylesheet" href="/bridal/css/admin-menu.css"></head><body><div class="admin-layout">
+  <div class="admin-shell">
+    <header class="admin-header">
+      <div class="branch-row">
+        <span class="sys-name">🔐 ブライダル診断システム</span>
+        <span class="admin-badge">システム管理者</span>
+      </div>
+      <div class="page-title-row">
+        <h2>管理者メニュー</h2>
+        <span class="admin-name">👤 admin</span>
+      </div>
+    </header>
+    <nav aria-label="管理メニュー" class="bottom-nav">
+      <a href="/bridal/admin/" class="active"><span class="nav-icon">🏠</span>メニュー</a>
+      <a href="#"><span class="nav-icon">👥</span>会員</a>
+      <a href="#"><span class="nav-icon">🏪</span>店舗</a>
+      <a href="#"><span class="nav-icon">📊</span>レポート</a>
+      <a href="#"><span class="nav-icon">🔐</span>設定</a>
+    </nav>
+    <main class="content">
+      <div class="stat-row">
+        <div class="stat-box"><div class="s-num">3</div><div class="s-lbl">店舗数</div></div>
+        <div class="stat-box"><div class="s-num">248</div><div class="s-lbl">全会員数</div></div>
+        <div class="stat-box"><div class="s-num">12</div><div class="s-lbl">スタッフ数</div></div>
+      </div>
+      <div class="menu-grid">
+        <button type="button" class="menu-item purple-border">
+          <span class="mi-icon">👥</span>
+          <span class="mi-label">会員管理</span>
+          <span class="mi-sub">全店舗・全権限</span></button>
+        <button type="button" class="menu-item dark-border">
+          <span class="mi-icon">🏪</span>
+          <span class="mi-label">店舗管理</span>
+          <span class="mi-sub">3店舗登録中</span></button>
+        <button type="button" class="menu-item gold-border">
+          <span class="mi-icon">👤</span>
+          <span class="mi-label">スタッフ管理</span>
+          <span class="mi-sub">アカウント・権限</span></button>
+        <button type="button" class="menu-item purple-border">
+          <span class="mi-icon">📊</span>
+          <span class="mi-label">統計・レポート</span>
+          <span class="mi-sub">全店舗データ</span></button>
+        <button type="button" class="menu-item dark-border">
+          <span class="mi-icon">🔐</span>
+          <span class="mi-label">セキュリティ</span>
+          <span class="mi-sub">ログ・監査</span></button>
+        <button type="button" class="menu-item danger-border">
+          <span class="mi-icon">⚙️</span>
+          <span class="mi-label">システム設定</span>
+          <span class="mi-sub">全体設定</span></button>
+      </div>
+      <section class="card notices" aria-labelledby="notification-title">
+        <h3 class="card-title" id="notification-title">🔔 システム通知</h3>
+        <div class="detail-row"><span class="detail-key">本日</span><span class="detail-val">新規会員登録 5名</span></div>
+        <div class="detail-row"><span class="detail-key">昨日</span><span class="detail-val">来店予約 28件（全店合計）</span></div>
+        <div class="detail-row" style="color:var(--warn);"><span class="detail-key">⚠️ 警告</span><span class="detail-val" style="color:var(--warn);">未処理キャンセル 2件</span></div>
+      </section>
+    </main>
+
+  </div>
+</div>
+
+<p class="sample-note">画面プレビュー：件数・通知・管理者名はサンプルです。</p><footer class="screen-footer">© ブライダル診断システム</footer><dialog id="notice" aria-labelledby="notice-title"><h2 id="notice-title"></h2><p id="notice-text"></p><button type="button" id="close-notice">閉じる</button></dialog><script src="/bridal/js/admin-menu.js"></script></body></html>
