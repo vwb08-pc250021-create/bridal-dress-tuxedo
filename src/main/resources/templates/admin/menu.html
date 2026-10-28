@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>管理者メニュー | ブライダル診断システム</title><link rel="stylesheet" href="/bridal/css/admin-menu.css"></head><body><div class="admin-layout">
+<!DOCTYPE html><html lang="ja" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>管理者メニュー | ブライダル診断システム</title><link rel="stylesheet" href="../../static/css/admin-menu.css" th:href="@{/css/admin-menu.css}"></head><body><div class="admin-layout">
   <div class="admin-shell">
     <header class="admin-header">
       <div class="branch-row">
@@ -11,7 +11,7 @@
       </div>
     </header>
     <nav aria-label="管理メニュー" class="bottom-nav">
-      <a href="/bridal/admin/" class="active"><span class="nav-icon">🏠</span>メニュー</a>
+      <a href="menu.html" th:href="@{/admin/}" class="active"><span class="nav-icon">🏠</span>メニュー</a>
       <a href="#"><span class="nav-icon">👥</span>会員</a>
       <a href="#"><span class="nav-icon">🏪</span>店舗</a>
       <a href="#"><span class="nav-icon">📊</span>レポート</a>
@@ -60,4 +60,4 @@
   </div>
 </div>
 
-<p class="sample-note">画面プレビュー：件数・通知・管理者名はサンプルです。</p><footer class="screen-footer">© ブライダル診断システム</footer><dialog id="notice" aria-labelledby="notice-title"><h2 id="notice-title"></h2><p id="notice-text"></p><button type="button" id="close-notice">閉じる</button></dialog><script src="/bridal/js/admin-menu.js"></script></body></html>
+<p class="sample-note">画面プレビュー：件数・通知・管理者名はサンプルです。</p><footer class="screen-footer">© ブライダル診断システム</footer><dialog id="notice" aria-labelledby="notice-title"><h2 id="notice-title"></h2><p id="notice-text"></p><button type="button" id="close-notice">閉じる</button></dialog><script src="../../static/js/admin-menu.js" th:src="@{/js/admin-menu.js}"></script></body></html>

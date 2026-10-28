@@ -6,7 +6,9 @@
 
 ## 1. 画面だけ見る
 
-`admin-menu-preview.html` をブラウザで開きます。DB・Javaの起動は不要です。「閉じる」の修正版を含みます。
+ZIPを「すべて展開」して、展開先の一番上にある `admin-menu-preview.html` をブラウザで開きます。ZIPの中から直接開かないでください。
+
+Spring Boot用の `src/main/resources/templates/admin/menu.html` も、展開後は直接開けるようにCSSとJavaScriptの相対パスに対応しています。フォルダー構成を保ってください。DB・Javaの起動は不要です。「閉じる」の修正版を含みます。
 
 ## 2. Spring Bootで開発する
 
